@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Вайбкодинг с нуля: бесплатный курс в Telegram</title>
+<meta name="description" content="Бесплатный курс по вайбкодингу в Telegram: 12 уроков, 2 в неделю. Сделаете свой сайт и свой продукт без опыта в коде.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="От первого промта до своего продукта: бесплатный курс по вайбкодингу">
+<meta property="og:description" content="12 уроков, 2 в неделю. Сделаете свой сайт и свой продукт без опыта в коде.">
+<meta property="og:url" content="https://mari-basovaa.github.io/">
+<meta property="og:image" content="https://mari-basovaa.github.io/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://mari-basovaa.github.io/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#1f4f86">
+<link rel="preload" as="image" href="images/hero-sky.webp" type="image/webp" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Oswald:wght@700&family=Unbounded:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F1EB; --ink:#10100F; --muted:#5d5c58; --line:rgba(16,16,15,.14);
+  --pink:#F553D2; --red:#F42726; --blue:#293EA1; --green:#13785D;
+  --display:'Unbounded', 'Arial Black', sans-serif;
+  --body:'Onest', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --gutter:clamp(16px, 5vw, 64px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;overflow-x:hidden}
+a{color:inherit}
+img,svg{display:block;max-width:100%}
+
+/* лёгкое зерно */
+.grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:50;opacity:.09;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--gutter)}
+section{padding:clamp(48px,8vw,96px) 0}
+.eyebrow{font-family:var(--body);font-weight:500;font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.eyebrow::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--red)}
+h1,h2,.num{font-family:var(--display);font-weight:700;letter-spacing:-.02em;line-height:1.02}
+h2{font-size:clamp(28px,5vw,56px);margin-bottom:20px}
+.lead{font-size:clamp(19px,2.2vw,24px);max-width:34ch}
+
+/* кнопки */
+.btn{display:inline-flex;align-items:center;gap:12px;padding:18px 28px;border-radius:999px;font-family:var(--body);font-weight:600;font-size:17px;text-decoration:none;border:1.5px solid var(--ink);transition:transform .25s ease, background .25s ease, color .25s ease;min-height:56px;white-space:nowrap}
+.btn svg{width:22px;height:22px;flex:none}
+.btn-dark{background:var(--ink);color:var(--bg)}
+.btn-dark:hover{background:var(--blue);border-color:var(--blue)}
+.btn-white{background:#fff;color:var(--ink);border-color:var(--line);box-shadow:0 6px 20px rgba(16,16,15,.08)}
+.btn-white:hover{border-color:var(--ink)}
+.btn-white svg,.offer-card .btn svg{color:#229ED9}
+.offer-card .btn:hover svg{color:var(--ink)}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible,.social a:focus-visible{outline:3px solid var(--pink);outline-offset:4px}
+.cta-note{font-size:16px;color:var(--muted);margin-top:14px}
+
+/* 1. Первый экран: небо, слоган, предметы */
+.hero{position:relative;min-height:100vh;min-height:100svh;padding:110px 0 150px;background:#1f4f86 url("images/hero-sky.webp") 22% 100%/cover no-repeat;overflow:hidden}
+.hero-fade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(243,241,235,0) 34%,rgba(243,241,235,.8) 56%,var(--bg) 74%);pointer-events:none}
+.hero-inner{position:relative;z-index:1}
+.hero-text{min-width:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.ch{display:inline-flex;align-items:center;gap:7px;height:42px;padding:0 18px;border:1.5px solid rgba(255,255,255,.75);border-radius:999px;font:500 17px var(--body);color:#fff}
+.ch-free::before{content:"";width:7px;height:7px;border-radius:50%;background:#7FE0B5}
+.slogan{font-family:'Oswald','Arial Narrow',sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(36px,12.4vw,110px);line-height:1.32;letter-spacing:-.01em;color:#fff;margin:0}
+.slogan span{display:table;white-space:nowrap;transform:scaleY(1.55);transform-origin:50% 55%}
+.collage{position:relative;width:346px;height:300px;margin-top:72px}
+.collage img,.collage .n,.collage .fd{position:absolute}
+.collage .n{font:500 14px var(--body);color:var(--ink)}
+.collage .fd{text-align:center}
+.collage .fd img{position:static;display:block;margin:0 auto}
+.collage .fd i{display:block;font:500 12px var(--body);font-style:normal;color:var(--ink);margin-top:2px;white-space:nowrap}
+
+/* 2. Предложение */
+.offer-card{position:relative;background:var(--ink);color:var(--bg);border-radius:40px;padding:clamp(32px,6vw,72px);overflow:hidden}
+.offer-card .eyebrow{color:rgba(243,241,235,.7)}
+.offer-card .eyebrow::before{background:var(--pink)}
+.offer-card h2{max-width:18ch;position:relative;z-index:1;margin-bottom:28px}
+.offer-card .lead{color:rgba(243,241,235,.82);margin-bottom:32px;position:relative;z-index:1}
+.offer-deco{position:absolute;right:-60px;top:-60px;width:300px;height:300px;z-index:0}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:48px;position:relative;z-index:1}
+.chip{padding:8px 16px;border:1px solid rgba(243,241,235,.3);border-radius:999px;font-size:16px}
+.path{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;z-index:1}
+.path::before{content:"";position:absolute;left:calc(100%/6);right:calc(100%/6);top:11px;height:1.5px;background:rgba(243,241,235,.35)}
+.step{position:relative;text-align:center;font-size:16px}
+.step i{display:block;width:24px;height:24px;border-radius:50%;margin:0 auto 14px;background:var(--bg);border:5px solid var(--ink);box-shadow:0 0 0 1.5px rgba(243,241,235,.6)}
+.step.end i{background:var(--pink);box-shadow:0 0 0 1.5px var(--pink)}
+.step.start i{background:var(--green);box-shadow:0 0 0 1.5px var(--green)}
+.step b{display:block;font-family:var(--display);font-weight:700;font-size:16px;margin-bottom:2px}
+.step small{color:rgba(243,241,235,.7);font-size:16px}
+.offer-card .btn{background:#fff;color:var(--ink);border-color:#fff;position:relative;z-index:1}
+.offer-card .btn:hover{background:var(--pink);border-color:var(--pink)}
+
+/* 3. Что вы сделаете */
+.help-list{list-style:none;border-top:1px solid var(--line)}
+.help-list li{display:flex;align-items:center;gap:20px;padding:24px 0;border-bottom:1px solid var(--line);font-size:clamp(18px,2.2vw,24px)}
+.ico{flex:none;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line)}
+.ico svg{width:26px;height:26px}
+
+/* 4. Обо мне */
+.about-grid{display:grid;grid-template-columns:minmax(220px,380px) 1fr;gap:clamp(32px,6vw,80px);align-items:center}
+.figure{position:relative;width:100%;aspect-ratio:1/1}
+.figure svg.shapes{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.photo{position:absolute;left:14%;top:12%;width:72%;height:72%;border-radius:50%;overflow:hidden;background:#d9d6cd}
+.photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.about .name{font-family:var(--display);font-weight:700;font-size:clamp(24px,3vw,32px);line-height:1.1;margin-bottom:6px}
+.about .title{font-size:17px;color:var(--muted);margin-bottom:24px}
+.about p.big{font-size:clamp(22px,3vw,32px);line-height:1.35;max-width:26ch;font-weight:500}
+.about p.big + p.big{margin-top:12px;color:var(--muted)}
+.social{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+.social a{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--ink);color:var(--ink);transition:background .25s ease,color .25s ease,transform .25s ease}
+.social a:hover{background:var(--ink);color:var(--bg);transform:translateY(-2px)}
+.social svg{width:24px;height:24px}
+.social-note{font-size:16px;color:var(--muted);margin-top:14px}
+
+/* 5. Цифры */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.stat{position:relative;padding:32px 28px 28px;border-radius:32px;overflow:hidden;min-height:240px;display:flex;flex-direction:column;justify-content:space-between;color:var(--bg)}
+.stat:nth-child(1){background:var(--blue)}
+.stat:nth-child(2){background:var(--pink);color:var(--ink)}
+.stat:nth-child(3){background:var(--green)}
+.num{font-size:clamp(64px,8vw,104px);font-weight:800;line-height:1}
+.stat p{font-size:17px;max-width:26ch;position:relative;z-index:1}
+.stat svg{position:absolute;right:-30px;top:-30px;width:140px;height:140px;opacity:.9}
+
+/* 6. Финал */
+.contact{text-align:center;position:relative}
+.contact h2{margin-left:auto;margin-right:auto;max-width:14ch}
+.contact .lead{margin:0 auto 32px}
+.contact .actions{display:flex;justify-content:center}
+.contact-deco{width:100%;max-width:560px;margin:0 auto 40px;height:auto}
+footer{padding:32px 0 48px;color:var(--muted);font-size:14px;text-align:center}
+
+/* закреплённая кнопка: всегда внизу экрана */
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;justify-content:center;
+  padding:16px var(--gutter) calc(16px + env(safe-area-inset-bottom));
+  background:linear-gradient(to top, rgba(243,241,235,.9) 40%, rgba(243,241,235,0));pointer-events:none}
+.cta-tg{pointer-events:auto;display:flex;align-items:center;justify-content:center;gap:14px;width:min(420px,100%);height:66px;border-radius:22px;background:#fff;color:var(--ink);font:600 20px var(--body);text-decoration:none;box-shadow:0 8px 24px rgba(16,16,15,.12);transition:transform .25s ease}
+.cta-tg svg{width:26px;height:26px;flex:none}
+.cta-tg:hover{transform:translateY(-2px)}
+.cta-tg:focus-visible{outline:3px solid var(--pink);outline-offset:4px}
+footer{padding-bottom:calc(120px + env(safe-area-inset-bottom))}
+
+@media (min-width:861px){
+  .hero{padding:120px 0 150px;display:flex}
+  .hero-fade{background:linear-gradient(to bottom,rgba(243,241,235,0) 26%,rgba(243,241,235,.8) 50%,var(--bg) 70%)}
+  .hero-inner{flex:1;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px}
+  .hero-text{align-self:start}
+  .collage{align-self:end;justify-self:center;margin:0;transform:scale(1.3);transform-origin:50% 100%}
+}
+@media (max-width:860px){
+  body{font-size:17px}
+  .grain{display:none}
+  .stats{grid-template-columns:1fr}
+  .stat{min-height:190px}
+  .path{grid-template-columns:1fr;gap:0;text-align:left}
+  .path::before{left:11px;right:auto;top:12px;bottom:12px;width:1.5px;height:auto}
+  .step{display:grid;grid-template-columns:24px 1fr;column-gap:18px;text-align:left;padding:10px 0;align-items:center}
+  .step i{margin:0;grid-row:span 2}
+  .about-grid{grid-template-columns:1fr}
+  .figure{max-width:300px}
+  .offer-deco{width:200px;height:200px;right:-70px;top:-70px}
+  .offer-card{border-radius:28px;padding:32px 24px}
+  .offer-card .btn{white-space:normal;text-align:left;line-height:1.25}
+
+  .sticky-cta{padding:12px var(--gutter) calc(20px + env(safe-area-inset-bottom))}
+  .cta-tg{width:100%}
+}
+@media (max-width:480px){
+  .btn{width:100%;justify-content:center;padding:16px 18px;gap:10px;font-size:16px}
+}
+@media (max-width:370px){
+  .collage{transform:scale(.88);transform-origin:0 0;margin-bottom:-36px}
+}
+@media (max-width:360px){
+  .btn{font-size:15px;padding:14px 16px;gap:8px;white-space:normal;line-height:1.25}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.sticky-cta,.cta-tg,.social a{transition:none}}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- Иконки -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path fill="currentColor" d="M21.4 3.2 2.9 10.3c-1.3.5-1.3 1.2 0 1.6l4.7 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.6-1.5ZM9.6 13.3l8.7-5.5c.4-.3.8-.1.5.2l-7.2 6.5-.3 3.1-1.7-4.3Z"/></symbol>
+</svg>
+
+<main>
+<!-- 1. Первый экран: небо, слоган, предметы -->
+<section class="hero">
+  <div class="hero-fade" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <div class="chips"><span class="ch">авторский курс</span><span class="ch ch-free">бесплатно</span></div>
+      <h1 class="slogan"><span>от первого промта</span><span>до своего продукта</span></h1>
+    </div>
+    <div class="collage" aria-hidden="true"><img src="images/notebook.webp" alt="" style="width:74px;left:6px;top:32px;transform:rotate(-8deg)"><span class="n" style="left:86px;top:40px">(01)</span><img src="images/glasses.webp" alt="" style="width:96px;left:128px;top:12px;transform:rotate(6deg)"><span class="n" style="left:228px;top:12px">(02)</span><img src="images/matcha.webp" alt="" style="width:60px;left:268px;top:64px;transform:rotate(6deg)"><img src="images/laptop.webp" alt="" style="width:158px;left:14px;top:176px;transform:rotate(1deg)"><span class="n" style="left:18px;top:158px">(03)</span><div class="fd" style="left:218px;top:200px"><img src="images/folder.webp" alt="" style="width:72px"><i>vibecoding</i></div><span class="n" style="left:224px;top:178px">(04)</span></div>
+  </div>
+</section>
+
+<!-- 2. Как устроен курс -->
+<section id="course">
+  <div class="wrap">
+    <div class="offer-card reveal">
+      <svg class="offer-deco" viewBox="0 0 300 300" aria-hidden="true">
+        <circle class="shape" cx="150" cy="150" r="150" fill="#293EA1"/>
+        <path class="shape" d="M60 150 A90 90 0 0 1 240 150 Z" fill="#F553D2"/>
+      </svg>
+      <h2>Вайбкодинг с нуля в Telegram-канале</h2>
+      <div class="chips">
+        <span class="chip">12 уроков</span>
+        <span class="chip">2 урока в неделю</span>
+        <span class="chip">2 проекта</span>
+        <span class="chip">Бесплатно</span>
+      </div>
+      <div class="path" role="list" aria-label="Путь курса">
+        <div class="step start" role="listitem"><i></i><b>Без опыта</b><small>код не нужен</small></div>
+        <div class="step" role="listitem"><i></i><b>Свой сайт</b><small>визитка или страница услуги</small></div>
+        <div class="step end" role="listitem"><i></i><b>Свой продукт</b><small>финиш</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Что вы сделаете -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">Что вы сделаете</div>
+    <h2 class="reveal">Код не нужен. Нужен первый шаг.</h2>
+    <ul class="help-list">
+      <li class="reveal">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#293EA1" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg></span>
+        Начнёте без опыта в коде.
+      </li>
+      <li class="reveal">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#F42726" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span>
+        Соберёте свой сайт: визитку или страницу услуги.
+      </li>
+      <li class="reveal">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#13785D" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 9.5v5l4-2.5z"/></svg></span>
+        Сделаете свой продукт, которым могут пользоваться люди.
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 4. Обо мне -->
+<section class="about">
+  <div class="wrap">
+    <div class="eyebrow reveal">Обо мне</div>
+    <div class="about-grid">
+      <div class="figure">
+        <svg class="shapes" viewBox="0 0 500 500" aria-hidden="true">
+          <path class="shape" d="M30 250 A220 220 0 0 1 470 250 Z" fill="#F553D2"/>
+          <rect class="shape" x="330" y="360" width="170" height="64" rx="32" fill="#293EA1"/>
+          <circle class="shape" cx="70" cy="410" r="44" fill="#13785D"/>
+          <circle class="shape" cx="440" cy="70" r="18" fill="#F42726"/>
+          <circle class="shape" cx="250" cy="250" r="236" fill="none" stroke="#10100F" stroke-width="1.2"/>
+        </svg>
+        <div class="photo"><img src="images/maria-basova.webp" alt="Мария Басова" width="720" height="720" loading="lazy" decoding="async"></div>
+      </div>
+      <div>
+        <div class="name reveal">Мария Басова</div>
+        <div class="title reveal">Founding AI Product Manager</div>
+        <p class="big reveal">Строю и запускаю продукты с ИИ в американской компании.</p>
+        <p class="big reveal">Провожу консультации, как стать AI Product Builder.</p>
+        <p class="big reveal">Самостоятельно пришла в AI Product Builder из инвестбанкинга, и вы тоже сможете.</p>
+        <div class="social reveal">
+          <a href="https://t.me/letsbuildsmtgreat" target="_blank" rel="noopener" aria-label="Telegram-канал"><svg aria-hidden="true"><use href="#i-tg"/></svg></a>
+        </div>
+        <p class="social-note reveal">Вопросы пишите мне в Telegram-канале.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Цифры -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">В цифрах</div>
+    <div class="stats">
+      <div class="stat reveal">
+        <svg viewBox="0 0 140 140" aria-hidden="true"><circle cx="70" cy="70" r="70" fill="#F3F1EB" opacity=".18"/></svg>
+        <div class="num"><span class="count" data-to="7">7</span></div>
+        <p>продуктов я запустила</p>
+      </div>
+      <div class="stat reveal">
+        <svg viewBox="0 0 140 140" aria-hidden="true"><path d="M0 70 A70 70 0 0 1 140 70 Z" fill="#10100F" opacity=".12"/></svg>
+        <div class="num"><span class="count" data-to="8">8</span></div>
+        <p>лет строю и помогаю запускать стартапы</p>
+      </div>
+      <div class="stat reveal">
+        <svg viewBox="0 0 140 140" aria-hidden="true"><rect x="0" y="45" width="140" height="50" rx="25" fill="#F3F1EB" opacity=".18"/></svg>
+        <div class="num"><span class="count" data-to="4">4</span></div>
+        <p>роли закрываю сама: продакт-менеджер, дизайнер, фулстек-разработчик и дата-инженер</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Финал -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <svg class="contact-deco" viewBox="0 0 560 120" aria-hidden="true">
+      <rect class="shape" x="0" y="28" width="180" height="64" rx="32" fill="#293EA1"/>
+      <circle class="shape" cx="250" cy="60" r="60" fill="#F553D2"/>
+      <path class="shape" d="M330 120 A60 60 0 0 1 450 120 Z" fill="#F42726"/>
+      <circle class="shape" cx="510" cy="60" r="32" fill="#13785D"/>
+    </svg>
+    <h2 class="reveal">Давайте строить вместе</h2>
+    <p class="lead reveal">Начните с первого урока, это бесплатно.</p>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 Мария Басова</footer>
+
+<!-- Закреплённая кнопка -->
+<div class="sticky-cta" id="stickyCta">
+  <a class="cta-tg" href="https://t.me/letsbuildsmtgreat" target="_blank" rel="noopener">
+    Перейти в канал
+    <svg aria-hidden="true"><use href="#i-plane"/></svg>
+  </a>
+</div>
+
+<script>
+// Слоган: обе строки одной ширины, длинная во всю колонку
+(function(){
+  function fit(){
+    var h=document.querySelector('.slogan'); if(!h) return;
+    var w=h.parentElement.clientWidth; h.style.fontSize='100px';
+    var m=0; h.querySelectorAll('span').forEach(function(s){ m=Math.max(m,s.getBoundingClientRect().width); });
+    if(m) h.style.fontSize=Math.min(Math.floor(100*w/m),120)+'px';
+  }
+  fit();
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
+  window.addEventListener('resize',fit);
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  // Без GSAP или при reduced motion всё остаётся видимым как есть.
+  if(!window.gsap || !window.ScrollTrigger) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Фото и фигуры в остальных блоках
+  gsap.from('.photo', {opacity:0, scale:.92, duration:1.2, ease:'power3.out',
+    scrollTrigger:{trigger:'.photo', start:'top 90%', once:true}});
+  document.querySelectorAll('section:not(.hero) svg').forEach(function(svg){
+    var shapes = svg.querySelectorAll('.shape');
+    if(!shapes.length) return;
+    gsap.from(shapes, {opacity:0, y:30, scale:.8, transformOrigin:'50% 50%', duration:1.2, ease:'power3.out', stagger:.1,
+      scrollTrigger:{trigger:svg, start:'top 90%', once:true}});
+  });
+
+  // Блоки появляются при прокрутке
+  gsap.utils.toArray('.reveal').forEach(function(el){
+    gsap.from(el, {opacity:0, y:28, duration:.9, ease:'power2.out',
+      scrollTrigger:{trigger:el, start:'top 88%', once:true}});
+  });
+
+  // Точки пути загораются по очереди
+  gsap.from('.step', {opacity:0, y:16, duration:.6, ease:'power2.out', stagger:.12,
+    scrollTrigger:{trigger:'.path', start:'top 85%', once:true}});
+
+  // Цифры считаются от 0
+  document.querySelectorAll('.count').forEach(function(el){
+    var to = parseFloat(el.dataset.to), o = {v:0};
+    ScrollTrigger.create({trigger:el, start:'top 90%', once:true, onEnter:function(){
+      el.textContent = '0';
+      gsap.to(o, {v:to, duration:1.6, ease:'power2.out', onUpdate:function(){ el.textContent = Math.round(o.v); }});
+    }});
+  });
+});
+</script>
+</body>
+</html>
